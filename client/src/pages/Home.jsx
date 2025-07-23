@@ -13,7 +13,7 @@ function Home() {
       ) : (
         <div className="w-full mx-auto py-6 sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
-            <div className=" grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between lg:gap-4 lg:flex-wrap  ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {pins && pins.length > 0 ? (
                 pins.map((e, i) => <PinCard key={i} pin={e} />)
               ) : (
@@ -28,3 +28,4 @@ function Home() {
 }
 
 export default Home;
+

@@ -1,5 +1,5 @@
 {
-  "name": "ClipBase",
+  "name": "Optipin",
   "version": "1.0.0",
   "desciption": "Backend API for pinterest-style application ClipBase built with Node.Js, Express, and mongoDB",
    "type": "module",

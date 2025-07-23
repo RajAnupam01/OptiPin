@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000",
-  withCredentials: true, // send cookies (like refreshToken)
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true,
 });
 
 let isRefreshing = false;
@@ -40,16 +40,15 @@ instance.interceptors.response.use(
       isRefreshing = true;
 
       try {
+        // Use environment variable for refresh token URL
         const { data } = await axios.get(
-          "http://localhost:5000/api/auth/update-token", // adjust route if needed
+          import.meta.env.VITE_REFRESH_URL,
           { withCredentials: true }
         );
 
         const newAccessToken = data.accessToken;
 
-        // set new token for future requests
         instance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
-
         onAccessTokenFetched(newAccessToken);
         isRefreshing = false;
 
@@ -57,6 +56,7 @@ instance.interceptors.response.use(
         return instance(originalRequest);
       } catch (refreshError) {
         isRefreshing = false;
+        // Optional: Redirect or log out user
         return Promise.reject(refreshError);
       }
     }
@@ -66,4 +66,5 @@ instance.interceptors.response.use(
 );
 
 export default instance;
+
 

@@ -3,11 +3,10 @@ dotenv.config()
 import connectDB from "./config/connectDB.js"
 import app from "./app.js"
 
-
 const startServer = async()=>{
     try {
         await connectDB();
-        const PORT = 3000
+        const PORT = process.env.PORT || 8000
         app.listen(PORT,()=>{
             console.log(`🚀 Server is running at PORT: ${PORT}`)
         })

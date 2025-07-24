@@ -105,26 +105,28 @@ export const loginUser = asyncHandler(async (req, res) => {
 
 
 export const logoutUser = asyncHandler(async (req, res) => {
-    if (!req.user || !req.user._id) {
-        throw new ApiError(401, "Unauthorized request");
-    }
+  if (!req.user || !req.user._id) {
+    throw new ApiError(401, "Unauthorized request");
+  }
 
-    await User.findByIdAndUpdate(req.user._id, {
-        $unset: { refreshToken: "" },
-    });
+  await User.findByIdAndUpdate(req.user._id, {
+    $unset: { refreshToken: "" },
+  });
 
-    const options = {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-    };
+  const cookieOptions = {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    path: "/", // this is important!
+  };
 
-    res
-        .clearCookie("accessToken", options)
-        .clearCookie("refreshToken", options)
-        .status(200)
-        .json(new ApiResponse(200, {}, "User logged out successfully."));
+  res
+    .clearCookie("accessToken", cookieOptions)
+    .clearCookie("refreshToken", cookieOptions)
+    .status(200)
+    .json(new ApiResponse(200, {}, "User logged out successfully."));
 });
+
 
 
 export const refreshAccessToken = asyncHandler(async (req, res) => {

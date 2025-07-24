@@ -10,7 +10,7 @@ function Account({ user }) {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-100 flex items-center justify-center px-4'>
+    <div className='sm:min-h-screen p-5 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-100 flex items-center justify-center px-4'>
       <div className='bg-white mt-6 rounded-3xl shadow-2xl p-8 w-full max-w-md sm:max-w-lg md:max-w-xl text-center transition-all duration-300 hover:shadow-pink-300'>
 
         {/* User Avatar */}

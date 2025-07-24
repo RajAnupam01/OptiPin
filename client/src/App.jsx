@@ -15,6 +15,8 @@ import PinPage from "./pages/PinPage"
 import Saved from "./pages/Saved"
 import Owner from "./pages/Owner"
 import Footer from "./components/Footer"
+import ScrollToTop from "./components/scrollToTop"
+
 
  
 
@@ -25,6 +27,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+       <ScrollToTop />
       <Toaster position="top-center" />
       <Navbar user={user} /> 
         <Routes>
@@ -39,6 +42,7 @@ function App() {
           <Route path="/saved" element={<ProtectedRoute><Saved/></ProtectedRoute>}  />
         </Routes>
       <Footer/>
+        <ScrollToTop />
       </BrowserRouter>
     </>
   )

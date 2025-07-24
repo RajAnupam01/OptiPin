@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-👉 _Coming Soon..._
+👉 [Visit OptiPin](https://opti-pin-client.vercel.app/)
 
 ---
 

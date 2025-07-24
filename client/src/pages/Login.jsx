@@ -18,7 +18,7 @@ function Login() {
     }
 
     return (
-        <div className="min-h-screen p-5 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center bg-gray-200">
+        <div className="sm:min-h-screen p-10  flex items-center justify-center bg-gray-200">
             <div className='bg-white p-8 rounded-lg shadow-lg w-full  max-w-md'>
                 <div className='flex justify-center mb-4 items-center'>
                     <img src={Logo} alt="optipin" className='h-12' />

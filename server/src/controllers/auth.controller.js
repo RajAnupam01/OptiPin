@@ -51,7 +51,6 @@ export const generateAccessRefreshToken = async (userId) => {
 export const RegisterUser = asyncHandler(async (req, res) => {
     const { fullname, email, password, gender } = req.body;
 
-    
     if ([fullname, email, password, gender].some((field) => field?.trim() === "")) {
         throw new ApiError(400, "All fields are mandatory to fill.");
     }
@@ -71,9 +70,8 @@ export const RegisterUser = asyncHandler(async (req, res) => {
         gender: gender.toLowerCase(),
     };
 
-    const avatarLocalPath = req.file?.path;
-    if (avatarLocalPath) {
-        const avatar = await uploadImageToCloudinary(avatarLocalPath);
+    if (req.file && req.file.buffer) {
+        const avatar = await uploadImageToCloudinary(req.file.buffer, "avatars");
         userPayLoad.avatar = avatar.url;
         userPayLoad.avatarPublicId = avatar.public_id;
     }
@@ -82,6 +80,7 @@ export const RegisterUser = asyncHandler(async (req, res) => {
 
     return sendTokenResponse(user._id, res, "User registered and logged in successfully", 201);
 });
+
 
 
 export const loginUser = asyncHandler(async (req, res) => {

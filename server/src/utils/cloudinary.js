@@ -12,33 +12,55 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const uploadImageToCloudinary = async (localFilePath, folder = 'general') => {
-  const resolvedPath = path.resolve(localFilePath);
+// export const uploadImageToCloudinary = async (localFilePath, folder = 'general') => {
+//   const resolvedPath = path.resolve(localFilePath);
 
-  try {
-    const result = await cloudinary.uploader.upload(resolvedPath, {
-      folder,
-      resource_type: "image",
-    });
+//   try {
+//     const result = await cloudinary.uploader.upload(resolvedPath, {
+//       folder,
+//       resource_type: "image",
+//     });
 
-    if (fs.existsSync(resolvedPath)) {
-      fs.unlinkSync(resolvedPath);
-    }
+//     if (fs.existsSync(resolvedPath)) {
+//       fs.unlinkSync(resolvedPath);
+//     }
 
-    return {
-      url: result.secure_url,
-      public_id: result.public_id,
-    };
-  } catch (error) {
-    console.error("Cloudinary Upload Error:", error.message, error.stack);
+//     return {
+//       url: result.secure_url,
+//       public_id: result.public_id,
+//     };
+//   } catch (error) {
+//     console.error("Cloudinary Upload Error:", error.message, error.stack);
 
-    if (fs.existsSync(resolvedPath)) {
-      fs.unlinkSync(resolvedPath);
-    }
+//     if (fs.existsSync(resolvedPath)) {
+//       fs.unlinkSync(resolvedPath);
+//     }
 
-    throw new ApiError(500, "Failed to upload image to Cloudinary");
-  }
+//     throw new ApiError(500, "Failed to upload image to Cloudinary");
+//   }
+// };
+
+export const uploadImageToCloudinary = (buffer, folder = 'general') => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder,
+        resource_type: 'image',
+      },
+      (error, result) => {
+        if (error) {
+          return reject(new ApiError(500, "Cloudinary upload failed"));
+        }
+        resolve({
+          url: result.secure_url,
+          public_id: result.public_id,
+        });
+      }
+    );
+    stream.end(buffer);
+  });
 };
+
 
 export const deleteImageFromCloudinary = async (publicId) => {
   try {

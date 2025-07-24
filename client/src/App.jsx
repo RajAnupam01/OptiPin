@@ -15,7 +15,7 @@ import PinPage from "./pages/PinPage"
 import Saved from "./pages/Saved"
 import Owner from "./pages/Owner"
 import Footer from "./components/Footer"
-import ScrollToTop from "./components/scrollToTop"
+import ScrollToTop from "./components/ScrollToTop"
 
 
  

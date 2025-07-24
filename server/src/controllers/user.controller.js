@@ -6,7 +6,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/AsyncHandler.js";
 import { deleteImageFromCloudinary, uploadImageToCloudinary } from "../utils/cloudinary.js";
 
-// --------------------- GET CURRENT USER ---------------------
+
 export const getMyProfile = asyncHandler(async (req, res) => {
   const user = req.user;
   if (!user) throw new ApiError(401, "User not found.");
@@ -14,7 +14,7 @@ export const getMyProfile = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, user, "Current user fetched successfully."));
 });
 
-// --------------------- GET USER PROFILE ---------------------
+
 export const getProfile = asyncHandler(async (req, res) => {
   const userId = req.params.id;
 
@@ -28,7 +28,7 @@ export const getProfile = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, user, "User profile fetched successfully."));
 });
 
-// --------------------- UPDATE USER PROFILE ---------------------
+
 export const updateMyProfile = asyncHandler(async (req, res) => {
   const userId = req.user._id;
   const { fullname, email, gender } = req.body;
@@ -76,7 +76,7 @@ export const updateMyProfile = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, updatedUser, "User updated successfully."));
 });
 
-// --------------------- DELETE PROFILE PICTURE ---------------------
+
 export const DeleteProfilePicture = asyncHandler(async (req, res) => {
   const user = req.user;
   if (!user) throw new ApiError(404, "User not found.");
@@ -94,7 +94,7 @@ export const DeleteProfilePicture = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, null, "Profile image deleted successfully."));
 });
 
-// --------------------- FOLLOW / UNFOLLOW USER ---------------------
+
 export const toggleFollowUser = asyncHandler(async (req, res) => {
   const currentUserId = req.user._id;
   const targetUserId = req.params.id;
@@ -125,7 +125,7 @@ export const toggleFollowUser = asyncHandler(async (req, res) => {
   );
 });
 
-// --------------------- SAVE / UNSAVE PIN ---------------------
+
 export const toggleSavePin = asyncHandler(async (req, res) => {
   const userId = req.user._id;
   const pinId = req.params.id;
@@ -152,7 +152,7 @@ export const toggleSavePin = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, null, isSaved ? "Pin unsaved." : "Pin saved."));
 });
 
-// --------------------- GET SAVED PINS ---------------------
+
 export const getSavedPins = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
@@ -164,7 +164,7 @@ export const getSavedPins = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, savedPins, "Saved pins fetched successfully."));
 });
 
-// --------------------- DELETE USER PROFILE ---------------------
+
 export const deleteMyProfile = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 

@@ -72,7 +72,7 @@ export const RegisterUser = asyncHandler(async (req, res) => {
     };
 
     if (req.file && req.file.buffer) {
-        const avatar = await uploadImageToCloudinary(req.file.buffer, "avatars");
+        const avatar = await uploadImageToCloudinary(req.file.buffer);
         userPayLoad.avatar = avatar.url;
         userPayLoad.avatarPublicId = avatar.public_id;
     }
@@ -118,7 +118,7 @@ export const logoutUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: "None",
-    path: "/", // this is important!
+    path: "/", 
   };
 
   res
@@ -155,6 +155,7 @@ export const refreshAccessToken = asyncHandler(async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: "None",
+             path: "/"
         };
 
         const { accessToken, refreshToken } = await generateAccessRefreshToken(user._id);

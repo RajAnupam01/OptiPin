@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
     }
     async function logoutUser(navigate) {
         try {
-            const { data } = await axios.get("/api/auth/logout")
+            const { data } = await axios.post("/api/auth/logout")
             setUser(null);
             setAuth(false);
             toast.success(data.message)

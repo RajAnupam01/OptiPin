@@ -13,4 +13,4 @@ export const router = Router()
 router.route("/register").post(upload.single("avatar"), RegisterUser);
 router.route("/login").post(loginUser);
 router.route("/update-token").get(refreshAccessToken)
-router.route("/logout").get(verifyJWT, logoutUser)
+router.route("/logout").post(verifyJWT, logoutUser)

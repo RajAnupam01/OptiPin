@@ -38,6 +38,7 @@ export const generateAccessRefreshToken = async (userId) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
+         path: "/",
     };
 
     return res

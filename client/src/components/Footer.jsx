@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer className="bg-gray-100 text-gray-600 mt-10 border-t">
       <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        
+
         {/* Brand Section */}
         <div>
           <h2 className="text-xl font-bold text-gray-800">OptiPin</h2>
@@ -36,11 +36,29 @@ function Footer() {
         <div>
           <h3 className="text-md font-semibold text-gray-800 mb-2">Connect</h3>
           <ul className="space-y-1 text-sm">
-            <li><a href="#" className="hover:text-red-500 transition">Email</a></li>
-            <li><a href="#" className="hover:text-red-500 transition">GitHub</a></li>
-            <li><a href="#" className="hover:text-red-500 transition">LinkedIn</a></li>
+            <li>
+              <a
+                href="https://mail.google.com/mail/?view=cm&to=anupam.r2301@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-500 transition"
+              >
+                Email
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/RajAnupam01" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/anupam-raj-101b96280" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition">
+                LinkedIn
+              </a>
+            </li>
           </ul>
         </div>
+
       </div>
 
       <div className="text-center py-4 text-xs text-gray-500 border-t">

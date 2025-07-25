@@ -18,8 +18,8 @@ function Login() {
     }
 
     return (
-        <div className="sm:min-h-screen p-10  flex items-center justify-center bg-gray-200">
-            <div className='bg-white p-8 rounded-lg shadow-lg w-full  max-w-md'>
+        <div className="sm:min-h-screen p-10 sm:pt-5 mt-5 sm:mt-0  flex items-center justify-center ">
+            <div className='bg-white p-8 sm:p-5  rounded-lg shadow-2xl shadow-gray-500 w-full  max-w-md'>
                 <div className='flex justify-center mb-4 items-center'>
                     <img src={Logo} alt="optipin" className='h-12' />
                 </div>
@@ -52,7 +52,7 @@ function Login() {
                         {btnLoading ? <LoadingAnimation /> : "Login"}
                     </button>
                 </form>
-                <div className='mt-6 text-center'>
+                <div className='mt-8 text-center'>
                     <div className='relative mb-4'>
                         <div className='absolute inset-0 flex items-center'>
                             <div className='w-full border-t border-gray-300'></div>

@@ -11,14 +11,14 @@ function Account({ user }) {
 
   return (
     <div className='sm:min-h-screen p-5 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-100 flex items-center justify-center px-4'>
-      <div className='bg-white mt-6 rounded-3xl shadow-2xl p-8 w-full max-w-md sm:max-w-lg md:max-w-xl text-center transition-all duration-300 hover:shadow-pink-300'>
+      <div className='bg-white m-6 rounded-3xl shadow-2xl p-8 w-full max-w-md sm:max-w-lg md:max-w-xl text-center transition-all duration-300 hover:shadow-pink-300'>
 
         {/* User Avatar */}
         {user?.avatar ? (
           <img
             src={user.avatar}
             alt='User Avatar'
-            className={`w-40 sm:w-56 md:w-80  max-h-96 mx-auto object-cover border-4  transition-transform duration-300 hover:scale-105 ${
+            className={`w-40 sm:w-56 md:w-80 mx-auto object-cover border-4 rounded-full transition-transform duration-300 hover:scale-105 ${
               user.gender === 'female'
                 ? 'border-pink-400 shadow-pink-300'
                 : 'border-blue-400 shadow-blue-300'

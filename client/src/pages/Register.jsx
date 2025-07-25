@@ -41,8 +41,8 @@ function Register() {
   }
 
   return (
-    <div className='min-h-screen p-10 sm:pt-5 mt-5 sm:mt-0 flex items-center justify-center'>
-      <div className='bg-white p-10 sm:p-5 rounded-lg shadow-2xl w-full  shadow-gray-500 max-w-md'>
+    <div className='min-h-screen p-8 sm:pt-5 mt-5 sm:mt-0 flex items-center justify-center'>
+      <div className='bg-white p-5 rounded-lg shadow-2xl w-full  shadow-gray-500 max-w-md'>
         <div className='flex justify-center mb-4 items-center'>
           <img
             src={Logo}

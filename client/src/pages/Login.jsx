@@ -63,7 +63,7 @@ function Login() {
                     </div>
                     <div className='mt-4 text-center text-sm'>
                         <span>
-                            Not on Pinterest Yet?{" "}
+                            Not on OptiPin Yet?{" "}
                             <Link to="/register" className='font-medium text-clipbase'>Register</Link>
                         </span>
                     </div>

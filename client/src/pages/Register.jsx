@@ -174,7 +174,7 @@ function Register() {
           </div>
           <div className='mt-4 text-sm'>
             <span>
-              Already on Pinterest?{" "}
+              Already on Optipin?{" "}
               <Link to="/login" className="font-medium text-blue-600">Login</Link>
             </span>
           </div>

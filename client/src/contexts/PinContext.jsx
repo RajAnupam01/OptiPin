@@ -92,6 +92,7 @@ export const PinProvider = ({ children }) => {
 
     // ✅ Get comments for a specific pin
   async function getCommentForPin(pinId) {
+
     try {
       const { data } = await axios.get(`/api/comment/pin/${pinId}`);
       return data.data; // returning just the comments array
@@ -145,6 +146,7 @@ export const PinProvider = ({ children }) => {
   }
     // ✅ Toggle like
   async function toggleLikePin(pinId) {
+   
     try {
       const { data } = await axios.patch(`/api/pins/${pinId}/like`);
       toast.success(data.message);
@@ -160,6 +162,7 @@ export const PinProvider = ({ children }) => {
       console.error(error);
       toast.error("Failed to like/unlike");
     }
+  
   }
 
 

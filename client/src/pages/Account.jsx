@@ -1,9 +1,12 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { UserData } from '../contexts/UserContext';
+import { Loading } from '../components/Loading';
 
 function Account({ user }) {
-  const { logoutUser, getProfile } = UserData();
+  const { logoutUser, getProfile} = UserData();
+  const [loading, setLoading] = useState(true);
+ 
   const navigate = useNavigate();
 
   const logoutHandler = () => logoutUser(navigate);
@@ -14,9 +17,14 @@ function Account({ user }) {
     const fetchData = async () => {
       const data = await getProfile(user._id);
       if (data) setProfile(data);
+      setLoading(false)
     };
     fetchData();
   }, [user]);
+
+
+  if (loading) return <Loading />;
+
 
   return (
     <div className='sm:min-h-screen p-6 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-100 flex items-center justify-center'>

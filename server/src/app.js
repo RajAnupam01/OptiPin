@@ -1,7 +1,8 @@
 import express from "express"
 import cors from "cors"
+import dns from "dns"
 import cookieParser from "cookie-parser"
-
+dns.setServers(["1.1.1.1","0.0.0.0"])
 const app = express();
 
 app.use(
